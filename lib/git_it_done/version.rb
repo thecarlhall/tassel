@@ -1,0 +1,3 @@
+module GitItDone
+  VERSION = "0.0.1"
+end
