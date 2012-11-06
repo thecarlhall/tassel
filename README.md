@@ -1,6 +1,6 @@
 # GitItDone
 
-TODO: Write a gem description
+Ruby-based todo list manager for the command line.
 
 ## Installation
 
