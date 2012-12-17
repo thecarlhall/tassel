@@ -1,13 +1,13 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'git_it_done/version'
+require 'tassel/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "git_it_done"
-  gem.version       = GitItDone::VERSION
+  gem.name          = "tassel"
+  gem.version       = Tassel::VERSION
   gem.authors       = ["Carl Hall"]
-  gem.email         = ["carl@cloudability.com"]
+  gem.email         = ["carl.hall@gmail.com"]
   gem.description   = %q{TODO: Write a gem description}
   gem.summary       = %q{TODO: Write a gem summary}
   gem.homepage      = ""

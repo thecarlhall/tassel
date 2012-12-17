@@ -1,22 +1,6 @@
-require 'git_it_done/version'
 require 'yaml'
 
-module GitItDone
-  class TodoConfig
-    attr_reader :config, :todo_path
-
-    def initialize
-      @config = YAML.load_file('config.yml')
-      @todo_path = @config[:todo_path]
-    end
-
-    def save
-      File.open('config.yml', ‘w’) do |out|
-        YAML.dump(@config, out)
-      end
-    end
-  end
-
+module Tassel
   class TodoList
     def initialize(config, name)
       @config = config
@@ -25,62 +9,18 @@ module GitItDone
       @list = YAML.load_file(@filename)
     end
 
+    def load
+    end
+
     def save
       File.open(@filename, ‘w’) do |out|
         YAML.dump(@list, out)
       end
     end
 
-    def add(item)
-    end
-
-    def rm(item)
-    end
-
-    def list
-      @list
-    end
-
-    def [](id)
-      @list[id]
-    end
-  end
-
-  class TodoItem
-    attr_accessor :title, :description, :state
-  end
-
-  class Todo
-    def initialize(*argv)
-      @argv = argv
-
-      begin
-        send(@argv[0])
-      rescue TypeError
-        list
-      rescue NoMethodError
-        puts "Command #{@argv[0]} not found.\n\n"
-        help
-      end
-    end
-
-    # Lists help information
-    def help
-       puts <<-help
-Commands for Todo.rb:
-  add [task name] - Add a new task
-  list - Lists all tasks
-  done [task id] - Complete a task
-  help - Prints out this information
-        help
-    end
-
     # Add task
-    def add
-      unless @argv[1]
-        puts "Lacking argument [name]"
-        exit
-      end
+    def add(item)
+      raise ArgumentError "Lacking argument [name]" if item.nil?
 
       # Append task to file
       contents = File.read('todo.td')
@@ -93,6 +33,7 @@ Commands for Todo.rb:
 
     # List all tasks
     def list
+      @list
       # Read content
       contents = File.read('todo.td')
       puts "No tasks" unless contents
@@ -131,7 +72,13 @@ Commands for Todo.rb:
         f.write(content)
       end
     end
+
+    def [](id)
+      @list[id]
+    end
+  end
+
+  class TodoItem
+    attr_accessor :title, :description, :state
   end
 end
-
-todo = GitItDone::Todo.new(*ARGV)

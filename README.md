@@ -1,4 +1,4 @@
-# GitItDone
+# Tassel
 
 Ruby-based todo list manager for the command line.
 
@@ -6,7 +6,7 @@ Ruby-based todo list manager for the command line.
 
 Add this line to your application's Gemfile:
 
-    gem 'git_it_done'
+    gem 'tassel'
 
 And then execute:
 
@@ -14,7 +14,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install git_it_done
+    $ gem install tassel
 
 ## Usage
 
