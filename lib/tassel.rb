@@ -4,34 +4,21 @@ require 'yaml'
 module Tassel
   def initialize
     @config = Tassel::Config.new
+
     @projects = {}
+    @config[:projects].each do |pd|
+      @projects[pd] = Project.new(pd)
+    end
   end
 
-  class Config
-    attr_accessor :config, :todo_path
-
-    def initialize
-      # TODO load config file from ~/.tassel/config.yml
-      config = YAML.load_file('config.yml')
-    end
-
-    def save
-      File.open('config.yml', ‘w’) do |out|
-        YAML.dump(@config, out)
-      end
-    end
-
-    # Lists help information
-    def help
-      puts <<-HELP
-Commands for Todo.rb:
-  add [task name] - Add a new task
-  list - Lists all tasks
-  done [task id] - Complete a task
-  help - Prints out this information
-      HELP
-    end
+  # Lists help information
+  def help
+    puts <<-HELP
+Commands for Tassel:
+  a[dd] <task name> - Add a new task
+  l[ist]            - Lists all tasks
+  d[one] <task id>  - Complete a task
+  h[elp]            - Prints out this information
+    HELP
   end
 end
-
-tassel = Tassel.new
