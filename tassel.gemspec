@@ -16,12 +16,4 @@ Gem::Specification.new do |gem|
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
-
-  gem.add_dependency "todo-txt"
-
-  gem.add_development_dependency "shoulda" #, ">= 0"
-  gem.add_development_dependency "rdoc" #, "~> 3.12"
-  gem.add_development_dependency "bundler" #, "~> 1.0.0"
-  gem.add_development_dependency "jeweler" #, "~> 1.8.4"
-  gem.add_development_dependency "simplecov" #, ">= 0"
 end
