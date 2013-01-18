@@ -1,7 +1,7 @@
 module Tassel
   module Handlers
     class List
-      command 'list', 'l', this
+      register_command 'list', 'l', this
     end
   end
 end

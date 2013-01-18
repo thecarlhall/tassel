@@ -1,7 +1,7 @@
 module Tassel
   module Handlers
     class Status
-      command 'status', 's', this
+      register_command 'status', 's', this
     end
   end
 end

@@ -1,10 +1,12 @@
-require 'rainbow'
 require 'tassel/config'
+require 'tassel/dsl'
 require 'term/ansicolor'
 require 'terminal-table'
 require 'yaml'
 
 module Tassel
+  include Tassel::DSL
+
   class Color
     extend Term::ANSIColor
   end
@@ -23,10 +25,21 @@ module Tassel
         projects[pd] = Project.new(pd)
       end
 
-      ## TODO load handlers from lib/tassel/handlers
-
       show_splash
+      load_commandhandler_files
       show_menu
+    end
+
+    private
+
+    def load_commandhandler_files
+      instance_eval(File.expand_path('../tasks', __FILE__))
+
+      @command_handlers_by_label ||= {}
+      @command_handlers_by_mnemonic ||= {}
+
+      @command_handlers_by_label[label] = command
+      @command_handlers_by_mnemonic[mnemonic] = command
     end
 
     # Show the splash messages
@@ -44,15 +57,6 @@ module Tassel
       puts " 1: #{Color.bold { 'a' }}dd"
       puts " 2: #{Color.bold { 'l' }}ist"
       puts " 3: #{Color.bold { 'd' }}one"
-    end
-
-    # Register a command. The command will be automatically displayed in the
-    # menu.
-    def register_command(options = {})
-      raise ArgumentError, 'Must provide `label` and `mnemonic`' unless options.has_key?('label') && options.has_key?('mnemonic')
-
-      @command_handlers_by_label[label] = h
-      @command_handlers_by_mnemonic[mnemonic] = h
     end
   end
 end
