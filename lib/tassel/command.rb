@@ -2,8 +2,8 @@ module Tassel
   class Command
     attr_accessor :label, :mnemonic, :worker
 
-    def initialize(&block)
-      instance_eval(options = {}, &block)
+    def validate
+      raise ArgumentError, 'Label and mnemonic must not be empty' if label.empty? || mnemonic.empty?
     end
   end
 end

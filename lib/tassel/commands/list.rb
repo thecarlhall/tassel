@@ -1,7 +1,11 @@
 module Tassel
   module Handlers
     class List
-      register_command 'list', 'l', this
+      register_command do
+        label('list')
+        mnemonic('l')
+        worker(self)
+      end
     end
   end
 end
