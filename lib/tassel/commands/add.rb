@@ -1,10 +1,10 @@
 module Tassel
-  module Handlers
+  module Commands
     class Add
-      register_command do
-        label('add')
-        mnemonic('a')
-        worker(self)
+      Tassel.register_command Tassel::Commands::Add do |c|
+        c.label = 'add'
+        c.mnemonic = 'a'
+      end
     end
   end
 end

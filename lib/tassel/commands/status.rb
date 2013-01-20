@@ -1,12 +1,10 @@
 module Tassel
-  module Handlers
+  module Commands
     class Status
-      register_command do
-        label('status')
-        mnemonic('s')
-        worker(self)
+      Tassel.register_command Tassel::Commands::Status do |c|
+        c.label = 'status'
+        c.mnemonic = 's'
       end
     end
   end
 end
-

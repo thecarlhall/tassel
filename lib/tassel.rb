@@ -1,24 +1,26 @@
 require 'tassel/config'
-require 'tassel/dsl'
+require 'tassel/command'
 require 'term/ansicolor'
 require 'terminal-table'
 require 'yaml'
 
 module Tassel
-  include Tassel::DSL
-
   class Color
     extend Term::ANSIColor
+  end
+
+  # Convenience method for call Tassel::Main.register_command
+  def self.register_command(worker, &block)
+    Tassel::Main.register_command(worker, &block)
   end
 
   class Main
     attr_accessor :projects
 
+    @commands ||= []
+
     def initialize
       config = Tassel::Config.new
-
-      @command_handlers_by_label = {}
-      @command_handlers_by_mnemonic = {}
 
       projects = {}
       config[:projects].each do |pd|
@@ -32,16 +34,15 @@ module Tassel
 
     # Register a command. The command will be automatically displayed in the
     # menu.
-    def register_command(&block)
+    def self.register_command(worker, &block)
       command = Command.new
-      command.instance_eval(&block)
+      command.worker = worker.new
+      yield command
+      #command.instance_eval(&block)
       command.validate
 
-      raise ArgumentError, 'Label already registered' if @command_handlers_label.has_key?(label)
-      raise ArgumentError, 'mnemonic already registered' if @command_handlers_by_mnemonic.has_key?(mnemonic)
-
-      @command_handlers_by_label[label] = command
-      @command_handlers_by_mnemonic[mnemonic] = command
+      @commands << command
+      #p @commands
 
       command
     end
@@ -49,21 +50,23 @@ module Tassel
     private
 
     def load_command_files
-      File.expand_path('../tasks', __FILE__)
+      Dir.glob(File.expand_path('../tassel/commands/*.rb', __FILE__)) do |file|
+        puts "Loading #{file}"
+        load file
+      end
     end
 
     # Show the splash messages
     def show_splash
-      puts Color.bold { "Welcome to Tassel!" }
-      puts
+      puts Color.bold { "Welcome to Tassel!" }, ''
     end
 
     # Show the menu
     def show_menu
       puts "#{Color.bold { '*** Commands ***' }}"
-      @command_handlers_by_label.each_with_index do |h, i|
+      @commands.each_with_index do |h, i|
         puts "#{i}: #{Color.bold { h[:label] }}"
-      end
+      end unless @commands.nil?
     end
   end
 end
