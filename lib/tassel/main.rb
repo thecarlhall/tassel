@@ -21,8 +21,10 @@ module Tassel
     end
 
     def initialize
-      # load our monkey patch to Todo::List#save
-      load File.expand_path('../../todo-txt/list.rb', __FILE__)
+      # load our monkey patches for Todo
+      Dir.glob(File.expand_path('../../todo-txt/*.rb', __FILE__)) do |file|
+        load file
+      end
 
       @config = Config.new
 
@@ -110,7 +112,7 @@ module Tassel
         print "\n" if i % 5 == 4
         print ' ' * 3 if i % 5 != 4
       end
-      print "#{Color.bold { 'Sup?' } }>"
+      print "#{Color.bold { 'Sup?' } }> "
     end
   end
 end
