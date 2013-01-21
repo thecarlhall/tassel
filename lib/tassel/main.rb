@@ -1,10 +1,17 @@
+require 'fileutils'
 require 'tassel/config'
 require 'tassel/command'
 require 'term/ansicolor'
 require 'terminal-table'
+require 'todo-txt'
 require 'yaml'
 
 module Tassel
+  # Main class for starting Tassel and loading commands to be interacted with.
+  #
+  # Using Tassel#run will run as a command line application. This includes
+  # displaying a splash to the user and managing interactions with a menu of
+  # commands.
   class Main
     attr_accessor :projects
 
@@ -13,57 +20,76 @@ module Tassel
     end
 
     def initialize
-      config = Tassel::Config.new
+      config = Config.new
+      p config
 
-      projects = {}
-      config[:projects].each do |pd|
-        projects[pd] = Project.new(pd)
-      end
+      # initialize the commands container
+      @commands = []
 
-      @commands ||= []
+      FileUtils.touch(config.todo_file) unless File.file?(config.todo_file)
+      @list = Todo::List.new(config.todo_file)
     end
 
+    # Run Tassel as a command line application. This will display a splash and
+    # manage user input to interact with a displayed menu.
     def run
       show_splash
+
       load_command_files
-      show_menu
+
+      command = ''
+      while true
+        show_menu
+        command = STDIN.gets
+
+        exit if command.nil?
+        command.chomp!.downcase
+
+        cmd = @commands.select { |c| c.mnemonic == command.intern }[0]
+
+        cmd.worker.call unless cmd.nil?
+      end
     end
 
-    # Register a command. The command will be automatically displayed in the
-    # menu.
-    def self.register_command(worker, label, mnemonic)
+    # Register a command. This is an entry point for our DSL. The command will
+    # be automatically displayed in the menu.
+    def register_command(label, mnemonic, &block)
       command = Command.new
-      command.worker = worker.new
       command.label = label
       command.mnemonic = mnemonic
+      command.worker = block
       command.validate
 
       @commands << command
-      p command, @commands
-
       command
     end
 
     private
 
+    # Load command files from a well known location
     def load_command_files
-      Dir.glob(File.expand_path('../tassel/commands/*.rb', __FILE__)) do |file|
+      puts "Loading commands from #{File.expand_path('../commands/*.rb', __FILE__)}"
+
+      Dir.glob(File.expand_path('../commands/*.rb', __FILE__)) do |file|
         puts "Loading #{file}"
-        load file
+        instance_eval(File.read(file))
       end
     end
 
     # Show the splash messages
     def show_splash
-      puts Color.bold { "Welcome to Tassel!" }, ''
+      puts Color.bold { "Welcome to Tassel!" }
     end
 
     # Show the menu
     def show_menu
-      puts "#{Color.bold { '*** Commands ***' }}"
-      @commands.each_with_index do |h, i|
-        puts "#{i}: #{Color.bold { h[:label] }}"
-      end unless @commands.nil?
+      puts '', "#{Color.bold { '*** Commands ***' }}"
+
+      @commands.each_with_index do |c, i|
+        print "#{c.mnemonic}|#{Color.bold { c.label }}"
+        print "\n" if i % 3 == 2
+        print ' ' * 3 if i % 3 != 2
+      end
     end
   end
 end

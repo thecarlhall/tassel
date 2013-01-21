@@ -1,7 +1,3 @@
-module Tassel
-  module Commands
-    class Status
-      Tassel.register_command Status, 'status', 's'
-    end
-  end
+register_command 'status', :s do
+  puts 'STATUS'
 end

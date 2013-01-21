@@ -1,7 +1,3 @@
-module Tassel
-  module Commands
-    class List
-      Tassel::Main.register_command List, 'list', :l
-    end
-  end
+register_command 'list', :l do
+  puts 'LIST'
 end
