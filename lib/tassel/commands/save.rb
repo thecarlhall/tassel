@@ -1,3 +1,4 @@
 register_command 'save', :s do
-  puts 'SAVE'
+  @config.save
+  @list.save
 end

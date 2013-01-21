@@ -1,3 +1,3 @@
-register_command 'status', :s do
+register_command 'status', :t do
   puts 'STATUS'
 end

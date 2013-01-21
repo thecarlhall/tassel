@@ -1,24 +1,36 @@
 module Tassel
   class Config
-    attr_accessor :tassel_home, :config_file, :todo_file
+    attr_accessor :config_file
 
     def initialize
-      @tassel_home = File.join(Dir.home, '.tassel')
-      Dir.mkdir(tassel_home) unless File.directory?(tassel_home)
+      config_file = File.join(File.join(Dir.home, '.tassel'), 'config.yml')
 
-      @config_file = File.join(tassel_home, 'config.yml')
-      @todo_file = File.join(tassel_home, 'todo.txt')
+      # load config file from ~/.tassel/config.yml
+      FileUtils.touch(config_file) unless File.file?(config_file)
+      @config = YAML.load_file(config_file) || {}
 
-      # TODO load config file from ~/.tassel/config.yml
-      @config = {}
-      @config = YAML.load_file(config_file) if File.file?(config_file)
-      @config[:sort] ||= :project
+      @config[:tassel_home] ||= File.join(Dir.home, '.tassel')
+      @config[:config_file] ||= File.join(@config[:tassel_home], 'config.yml')
+      @config[:todo_file] ||= File.join(@config[:tassel_home], 'todo.txt')
+
+      @config[:sort_by] ||= :project
+      @config[:input_format] ||= :form
 
       # iterate through the config and create attribute accessors.
       @config.keys.each do |key|
-        self.instance_eval("def #{key};@config[#{key}];end")
-        self.instance_eval("def #{key}=(val);@config[#{key}]=val;end")
+        instance_eval("def #{key};@config[:#{key}];end")
+        instance_eval("def #{key}=(val);@config[:#{key}]=val;end")
       end
+
+      Dir.mkdir(tassel_home) unless File.directory?(tassel_home)
+    end
+
+    def method_missing
+      return nil
+    end
+
+    def [](key)
+      @config[key]
     end
 
     # Save the current config to the same file it was loaded from.
