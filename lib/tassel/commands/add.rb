@@ -1,10 +1,7 @@
 module Tassel
   module Commands
     class Add
-      Tassel.register_command Tassel::Commands::Add do |c|
-        c.label = 'add'
-        c.mnemonic = 'a'
-      end
+      Tassel::Main.register_command Add, 'add', :a
     end
   end
 end

@@ -1,10 +1,7 @@
 module Tassel
   module Commands
     class Status
-      Tassel.register_command Tassel::Commands::Status do |c|
-        c.label = 'status'
-        c.mnemonic = 's'
-      end
+      Tassel.register_command Status, 'status', 's'
     end
   end
 end
