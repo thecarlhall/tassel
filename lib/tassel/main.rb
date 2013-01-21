@@ -1,3 +1,12 @@
+require 'fileutils'
+require 'logger'
+require 'tassel/config'
+require 'tassel/command'
+require 'term/ansicolor'
+require 'terminal-table'
+require 'todo-txt'
+require 'yaml'
+
 module Tassel
   # Main class for starting Tassel and loading commands to be interacted with.
   #
@@ -12,7 +21,8 @@ module Tassel
     end
 
     def initialize
-      puts File.expand_path('lib/todo-txt/list.rb', __FILE__)
+      # load our monkey patch to Todo::List#save
+      load File.expand_path('../../todo-txt/list.rb', __FILE__)
 
       @config = Config.new
 
@@ -79,6 +89,11 @@ module Tassel
       @commands.sort! do |a, b|
         a.mnemonic <=> b.mnemonic
       end
+    end
+
+    def save
+      @config.save
+      @list.save
     end
 
     # Show the splash messages
