@@ -36,6 +36,9 @@ module Tassel
       @list = Todo::List.new(@config.todo_file)
     end
 
+    # Get a logger for this class. Create a new one if necessary.
+    #
+    # @return [Logger] The logger set for this class.
     def logger
       @logger ||= Logger.new(File.join(@config.tassel_home, 'tassel.log'))
     end
@@ -67,6 +70,8 @@ module Tassel
 
     # Register a command. This is an entry point for our DSL. The command will
     # be automatically displayed in the menu.
+    #
+    # @return [Command] The command created by this function.
     def register_command(label, mnemonic, &block)
       command = Command.new
       command.label = label
@@ -93,7 +98,8 @@ module Tassel
       end
     end
 
-    def save
+    # Save configuration and tasks
+    def save!
       @config.save
       @list.save
     end
