@@ -1,4 +1,4 @@
-register_command 'list', :l do
+register_command 'list', :mnemonic => :l do
   tasks = nil
   case @config.sort_by
   when :context

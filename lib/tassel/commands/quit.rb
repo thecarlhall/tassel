@@ -1,4 +1,4 @@
-register_command 'quit', :q do
+register_command 'quit', :mnemonic => :q do
   save!
   exit
 end

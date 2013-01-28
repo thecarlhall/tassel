@@ -1,9 +1,9 @@
 module Tassel
   class Command
-    attr_accessor :label, :mnemonic, :worker
+    attr_accessor :label, :opts, :worker
 
     def validate
-      raise ArgumentError, "Label and mnemonic must not be empty [#{self.inspect}]" if label.nil? || mnemonic.nil? || worker.nil?
+      raise ArgumentError, "label and worker must be set [#{self.inspect}]" if (label.nil? && mnemonic.nil?) || worker.nil?
     end
   end
 end

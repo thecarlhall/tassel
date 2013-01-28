@@ -1,4 +1,4 @@
-register_command 'add', :a do
+register_command 'add', :mnemonic => :a do
   if @config.input_format == 'todo.txt'
     print 'Type your task in todo.txt format> '
     task = gets.chomp

@@ -1,3 +1,3 @@
-register_command 'status', :t do
+register_command 'status', :mnemonic => :t do
   puts 'STATUS'
 end
