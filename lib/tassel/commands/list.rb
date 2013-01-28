@@ -11,5 +11,5 @@ register_command 'list', :mnemonic => :l do
 
   tasks.each do |task|
     puts task.orig
-  end
+  end unless tasks.nil?
 end
