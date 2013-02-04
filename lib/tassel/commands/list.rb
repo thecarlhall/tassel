@@ -4,7 +4,7 @@ register_command 'list', :mnemonic => :l do
   when :context
     tasks = @list.sort { |a, b| a.contexts[0] <=> b.contexts[0] }
   when :priority
-    tasks = @list.sort { |a, b| a.priority <=> b.priority }
+    tasks = @list.sort { |a, b| b.priority <=> a.priority }
   else
     tasks = @list.sort { |a, b| a.projects[0] <=> b.projects[0] }
   end
