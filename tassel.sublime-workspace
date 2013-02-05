@@ -1,0 +1,332 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"credent",
+				"credential1"
+			],
+			[
+				"ser",
+				"service_id"
+			],
+			[
+				"opera",
+				"operand"
+			],
+			[
+				"accou",
+				"account_identifier"
+			],
+			[
+				"fact",
+				"facts2"
+			],
+			[
+				"facts1",
+				"facts1_common"
+			],
+			[
+				"op",
+				"operand"
+			],
+			[
+				"ebs_",
+				"ebs_iops"
+			],
+			[
+				"lo",
+				"load_file"
+			],
+			[
+				"def_",
+				"default_valuess"
+			],
+			[
+				"env",
+				"environment_specific_values"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				":2",
+				"Snippet: step(2) { |e| .. }"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: list",
+				"Package Control: List Packages"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 530.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/carl/projects/cloudability/cervantes/projects/gui/features/step_definitions/service_month.rb",
+		"/Users/carl/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/carl/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/carl/projects/cloudability/cervantes/projects/gui/features/step_definitions/ca_150.rb",
+		"/Users/carl/projects/cloudability/cervantes/projects/gui/features/step_definitions/reporting_steps.rb",
+		"/Users/carl/projects/cloudability/cervantes/projects/gui/features/step_definitions/deduplication_steps.rb",
+		"/Users/carl/projects/cloudability/cervantes/projects/gui/app/concerns/daily_mail.rb",
+		"/Users/carl/projects/cloudability/cervantes/projects/gui/features/step_definitions/alert_steps.rb",
+		"/Users/carl/projects/cloudability/cervantes/projects/gui/app/helpers/currency_helper.rb",
+		"/Users/carl/projects/cloudability/cervantes/projects/cardenio/app/models/usage_cube/report.rb",
+		"/Users/carl/projects/cloudability/cervantes/projects/cardenio/app/models/usage_cube/reporting.rb",
+		"/Users/carl/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/carl/projects/cloudability/cervantes/projects/gui/features/dashboard/deduplication.feature",
+		"/Users/carl/projects/cloudability/cervantes/projects/ferdinand/scripts/ping.coffee",
+		"/Users/carl/projects/cloudability/cervantes/projects/gui/app/models/billing_cube/fact.rb",
+		"/Users/carl/projects/cloudability/cervantes/projects/cardenio/app/models/usage_cube/fact.rb",
+		"/Users/carl/Desktop/samples_metric_reports_keys.json",
+		"/Users/carl/Downloads/jQuery183017142366408370435_1355786918540.js",
+		"/Users/carl/Downloads/jQuery183041510842368006706_1355793229988.2.js",
+		"/Volumes/NO NAME/carlhall_27B90558.asc",
+		"/Users/carl/Library/Application Support/Colloquy/Styles/Variants/cc.javelin.colloquy.style.standard/nojoinpart.css",
+		"/Users/carl/Library/Application Support/Colloquy/Styles/Variants/cc.javelin.colloquy.style.standard/No join-part.css",
+		"/Users/carl/Downloads/airbrake-data/36497.response.2.html",
+		"/Users/carl/Downloads/airbrake-data/36497.response.3.meta",
+		"/Users/carl/Downloads/airbrake-data/36497.response.2.meta",
+		"/Users/carl/projects/cloudability/config/bin/mariadb/config.yml",
+		"/Users/carl/Downloads/129930.user.js",
+		"/Users/carl/projects/cloudability/config/bin/mariadb/bootscript.sh.erb",
+		"/Users/carl/projects/cloudability/config/bin/provision_mariadb.rb",
+		"/Users/carl/projects/cloudability/config/bin/zookeeper/bootscript.erb",
+		"/Users/carl/projects/cloudability/config/bin/riak/bootscript.erb.sh",
+		"/Users/carl/projects/cloudability/config/bin/strongbox/bootscript.erb",
+		"/Users/carl/projects/cloudability/config/bin/redis/bootscript.erb",
+		"/Users/carl/projects/fog/lib/fog/aws/models/compute/server.rb",
+		"/Users/carl/projects/cloudability/config/bin/mariadb/bootscript.erb.sh",
+		"/Users/carl/projects/cloudability/config/bin/provision_redis.rb",
+		"/Users/carl/Library/Application Support/Sublime Text 2/Packages/BeautifyRuby/BeautifyRuby.sublime-settings",
+		"/Users/carl/projects/fog/lib/fog/aws/parsers/compute/run_instances.rb",
+		"/Users/carl/projects/fog/lib/fog/aws/models/compute/servers.rb",
+		"/Users/carl/projects/fog/lib/fog/core/collection.rb",
+		"/Users/carl/projects/cloudability/config/bin/provision_riak.rb",
+		"/Users/carl/projects/cloudability/config/bin/riak/bootscript.sh",
+		"/Users/carl/projects/cloudability/config/bin/old_testament.rb",
+		"/Users/carl/projects/fog/lib/fog/aws/models/compute/volume.rb",
+		"/Users/carl/projects/cloudability/config/bin/mariadb/bootscript.erb",
+		"/Users/carl/projects/cloudability/config/bin/setup_strongbox_deployinator.sh",
+		"/Users/carl/projects/fog/lib/fog/compute/models/server.rb",
+		"/Users/carl/projects/cloudability/config/bin/Gemfile",
+		"/Users/carl/projects/fog/lib/fog/aws/requests/compute/create_volume.rb",
+		"/Users/carl/projects/fog/lib/fog/compute.rb",
+		"/Users/carl/projects/cloudability/config/bin/redis/config.yml",
+		"/Users/carl/projects/cloudability/config/bin/.rvmrc",
+		"/Users/carl/projects/cloudability/config/bin/provision_strongbox.sh",
+		"/Users/carl/projects/cloudability/config/bin/provision_strongbox.rb",
+		"/Users/carl/projects/cloudability/config/bin/provision_zookeeper.rb",
+		"/Users/carl/projects/cloudability/config/puppet/manifests/site.pp",
+		"/Users/carl/projects/cloudability/config/bin/redis/config_sample.yml",
+		"/Users/carl/projects/cloudability/config/puppet/modules/mysql/manifests/disableboot.pp",
+		"/Users/carl/projects/cloudability/config/puppet/modules/zookeeper/manifests/init.pp",
+		"/Users/carl/projects/cloudability/config/puppet/manifests/nodes.pp",
+		"/Users/carl/projects/cloudability/config/puppet/manifests/templates.pp",
+		"/Users/carl/projects/cloudability/config/puppet/modules/mysql/manifests/client.pp",
+		"/Users/carl/projects/cloudability/config/puppet/puppet.conf",
+		"/Users/carl/projects/cloudability/config/bin/riak/deployment_notes.txt",
+		"/Users/carl/projects/cloudability/gui/spec/models/user_spec.rb",
+		"/Users/carl/projects/cloudability/gui/features/api/tribes.feature",
+		"/Users/carl/projects/cloudability/gui/spec/api/v1/authentication_spec.rb",
+		"/Users/carl/projects/cloudability/gui/db/migrate/20110519172721_devise_create_admin_users.rb",
+		"/Users/carl/projects/cloudability/gui/.foreman",
+		"/Users/carl/projects/cloudability/nephology/Gemfile",
+		"/Users/carl/projects/cloudability/nephology/README",
+		"/Users/carl/Desktop/Key Management-Deployment.md",
+		"/Users/carl/Desktop/Setting-up-a-production-environment.mdown",
+		"/Users/carl/Library/Application Support/Sublime Text 2/Packages/User/sublime-jslint.sublime-settings"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"for_credential",
+			"fact_spend",
+			":for_user",
+			"setup",
+			"queues",
+			"\\{\"cents\":(\\d+)\\}",
+			"currency",
+			",\"currency\":{\"id\":45,\"key\":\"eur\",\"priority\":2,\"iso_code\":\"EUR\"",
+			"    #",
+			"bucket",
+			"shell> ",
+			"xfs",
+			"puts server_data.body[\"instancesSet\"]\nputs server_data.body[\"instancesSet\"][0]",
+			"'",
+			"ports",
+			"=\n",
+			"base",
+			"bas",
+			"base\n\nbase",
+			"Follow",
+			"_reserved_instance_report_archive"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"\\1",
+			"{\"cents\":\\1}",
+			"    ",
+			"\""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.jslint_result_view":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"billing_cube/report",
+				"gui/app/models/billing_cube/reporting.rb"
+			],
+			[
+				"reprorting",
+				"cardenio/app/models/usage_cube/reporting.rb"
+			],
+			[
+				"report.rb",
+				"cardenio/app/models/usage_cube/report.rb"
+			],
+			[
+				"daily_mail",
+				"gui/app/concerns/daily_mail.rb"
+			],
+			[
+				"fact.rb",
+				"gui/app/models/billing_cube/fact.rb"
+			],
+			[
+				"servers.rb",
+				"fog/lib/fog/aws/models/compute/servers.rb"
+			],
+			[
+				"aws/volume.rb",
+				"fog/lib/fog/aws/models/compute/volume.rb"
+			],
+			[
+				"useradmin",
+				"gui/db/migrate/20110519172721_devise_create_admin_users.rb"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 310.0,
+	"status_bar_visible": true
+}

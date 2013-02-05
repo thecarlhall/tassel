@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'tassel/main'
-tassel = Tassel::Main.new.run
+require 'tassel'
+
+Tassel.init!
+Tassel.run

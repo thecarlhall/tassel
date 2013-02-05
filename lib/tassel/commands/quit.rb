@@ -1,4 +1,4 @@
 register_command 'quit', :mnemonic => :q do
-  save!
+  Tassel.save!
   exit
 end

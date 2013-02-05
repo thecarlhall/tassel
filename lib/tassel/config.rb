@@ -1,5 +1,9 @@
+require 'tassel/logging'
+
 module Tassel
   class Config
+    include Tassel::Logging
+
     PROTECTED_KEYS = [:tassel_dir, :tassel_home, :config_file]
 
     def initialize
@@ -7,16 +11,19 @@ module Tassel
       @config[:tassel_home] ||= File.join(Dir.home, '.tassel')
       @config[:config_file] ||= File.join(@config[:tassel_home], 'config.yml')
 
+      logger.debug("Loading config from #{@config[:config_file]}")
+
       # load config file from ~/.tassel/config.yml
       Dir.mkdir(@config[:tassel_home]) unless File.directory?(@config[:tassel_home])
       FileUtils.touch(@config[:config_file]) unless File.file?(@config[:config_file])
-      @config.merge!(YAML.load_file(@config[:config_file]))
+      loaded_config = YAML.load_file(@config[:config_file])
+      @config.merge!(loaded_config) unless loaded_config === false
 
       @config[:todo_file] ||= File.join(@config[:tassel_home], 'todo.txt')
 
       @config[:sort_by] ||= :project
       @config[:input_format] ||= :form
-      @config[:initial_command] ||= :q
+      @config[:initial_command] ||= :l
 
       # iterate through the config and create attribute accessors.
       @config.keys.each do |key|
