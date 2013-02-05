@@ -1,5 +1,5 @@
-register_command 'add', :mnemonic => :a do
-  if @config.input_format == 'todo.txt'
+Tassel.register_command 'add', :mnemonic => :a do
+  if Tassel.config.input_format == 'todo.txt'
     print 'Type your task in todo.txt format> '
     task = gets.chomp
   else
@@ -14,5 +14,5 @@ register_command 'add', :mnemonic => :a do
 
     task = "(#{priority}) #{text} +#{project} @#{context}"
   end
-  @list.push(Todo::Task.new(task))
+  Tassel.list.push(Todo::Task.new(task))
 end

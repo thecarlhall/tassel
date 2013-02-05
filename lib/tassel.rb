@@ -13,9 +13,9 @@ require 'todo-txt'
 module Tassel
   class << self
     include Tassel::Logging
-  end
 
-  attr_accessor :projects
+    attr_reader :projects, :config, :list
+  end
 
   class Color
     extend Term::ANSIColor
@@ -99,7 +99,7 @@ module Tassel
 
     Dir.glob(File.expand_path('../tassel/commands/*.rb', __FILE__)) do |file|
       logger.info("  Loading #{file}")
-      instance_eval(File.read(file))
+      load file
     end
     @commands.sort! do |a, b|
       a.label <=> b.label
