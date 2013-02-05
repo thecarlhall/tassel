@@ -3,9 +3,7 @@ require 'tassel/command'
 require 'tassel/config'
 require 'tassel/logging'
 require 'term/ansicolor'
-require 'terminal-table'
 require 'todo-txt'
-require 'yaml'
 
 # Main class for starting Tassel and loading commands to be interacted with.
 #
@@ -95,12 +93,12 @@ module Tassel
 
   private
 
-  # Load command files from a well known location
+  # Load command files from a well known location.
   def self.load_command_files
     logger.info("Loading commands from #{File.expand_path('../commands/*.rb', __FILE__)}")
 
     Dir.glob(File.expand_path('../tassel/commands/*.rb', __FILE__)) do |file|
-      Tassel.logger.info("Loading #{file}")
+      logger.info("  Loading #{file}")
       instance_eval(File.read(file))
     end
     @commands.sort! do |a, b|
@@ -108,26 +106,27 @@ module Tassel
     end
   end
 
-  # Save configuration and tasks
+  # Save configuration and tasks.
   def self.save!
     @config.save
     @list.save
   end
 
-  # Show the splash messages
+  # Show the splash message.
   def self.show_splash
     puts Color.bold { "Welcome to Tassel!" }, ''
   end
 
-  # Show the menu
+  # Show the menu by going through each command.
   def self.show_menu
     puts '', "#{Color.bold { '*** Commands ***' }}"
 
     @commands.each_with_index do |c, i|
       print "#{c.opts[:mnemonic]}|" unless c.opts[:mnemonic].nil?
       print "#{Color.bold { c.label }}"
-      print "\n" if i % 5 == 4
-      print ' ' * 3 if i % 5 != 4
+      # add a line return at the menu width
+      print "\n" if i % @config.menu_width == (@config.menu_width - 1)
+      print ' ' * @config.menu_spacing if i % @config.menu_width != (@config.menu_width - 1)
     end
     print "#{Color.bold { 'Sup?' } }> "
   end

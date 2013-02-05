@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'todo-txt'
 gem 'term-ansicolor'
-gem 'terminal-table'
 
 group :development do
   gem 'yard'

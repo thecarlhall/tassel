@@ -24,6 +24,8 @@ module Tassel
       @config[:sort_by] ||= :project
       @config[:input_format] ||= :form
       @config[:initial_command] ||= :l
+      @config[:menu_width] ||= 7
+      @config[:menu_spacing] ||= 3
 
       # iterate through the config and create attribute accessors.
       @config.keys.each do |key|
@@ -38,7 +40,7 @@ module Tassel
       Dir.mkdir(tassel_home) unless File.directory?(tassel_home)
     end
 
-    # Get the value for a key in this configuration
+    # Get the value for a key in this configuration using array syntax.
     #
     # @return The value set at the key or nil.
     def [](key); @config[key] end
