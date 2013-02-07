@@ -7,7 +7,7 @@ module Tassel
         when :context
           tasks = Tassel.list.sort { |a, b| a.contexts[0] <=> b.contexts[0] }
         when :priority
-          tasks = Tassel.list.sort { |a, b| b.priority <=> a.priority }
+          tasks = Tassel.list.sort { |a, b| b <=> a }
         else
           tasks = Tassel.list.sort { |a, b| a.projects[0] <=> b.projects[0] }
         end

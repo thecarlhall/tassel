@@ -128,6 +128,6 @@ module Tassel
       print "\n" if i % @config.menu_width == (@config.menu_width - 1)
       print ' ' * @config.menu_spacing if i % @config.menu_width != (@config.menu_width - 1)
     end
-    print "#{Color.bold { 'Sup?' } }> "
+    print "\n#{Color.bold { 'Sup?' } }> "
   end
 end
